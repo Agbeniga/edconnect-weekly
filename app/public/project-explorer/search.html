@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Search</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm bg-primary">
+      <h1 class="text-light title">Project Explorer</h1>
+      <!-- <h2>One Stop Database for Final Year Projects</h2> -->
+      <form action="" class="form-inline">
+        <input
+          type="search"
+          placeholder="Search Projects"
+          class="form-control mr-sm-2"
+        />
+        <button type="submit" class="btn nav-button">
+          Search
+        </button>
+      </form>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="viewProject.html " class="nav-link text-muted">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a href="createProject.html" class="nav-link text-muted">Submit</a>
+        </li>
+        <li class="nav-item">
+          <a href="login.html" class="nav-link text-muted">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="register.html" class="nav-link text-muted">Register</a>
+        </li>
+      </ul>
+    </nav>
+    <br />
+    <br />
+    <div class="container">
+      <h2>Photo Gallery</h2>
+      <br />
+      <div class="custom-jumbotron">
+        <ul class="row">
+          <div class="col-6">
+            <input
+              type="search"
+              placeholder="Search project name, author, abstract, tags"
+              class="form-control"
+            />
+          </div>
+          <div class="">
+            <button type="submit" class="btn">
+              Search by
+            </button>
+          </div>
+          <div class="">
+            <select name="program" class="form-control">
+              <option value="name">name</option>
+            </select>
+          </div>
+          <div class="">
+            <button type="submit" class="btn btn-primary">
+              Search by
+            </button>
+          </div>
+        </ul>
+      </div>
+      <div class="row">
+        <h2>All Projects</h2>
+        <p>(4 results)</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-12 card text-left">
+          <div class="card-body project-list">
+            <h3 class="text-primary">Project 4</h3>
+
+            <li>Henry James, Bola Ade</li>
+            <p>
+              Description: Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Culpa rerum distinctio illum dolorum cum, voluptates
+              inventore necessitatibus in porro impedit quo praesentium, modi
+              accusamus blanditiis expedita maxime atque nihil adipisci.
+            </p>
+            <li class="text-primary">
+              <a href="#" class="card-link">#yaml,</a>
+              <a href="#" class="card-link">#ejs</a>
+            </li>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 card text-left">
+          <div class="card-body project-list">
+            <h3 class="text-primary">Project 3</h3>
+
+            <li>Ben Rice, Ade Sola</li>
+            <p>
+              Description: Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Culpa rerum distinctio illum dolorum cum, voluptates
+              inventore necessitatibus in porro impedit quo praesentium, modi
+              accusamus blanditiis expedita maxime atque nihil adipisci.
+            </p>
+            <li class="text-primary">
+              <a href="" class="card-link">#css,</a
+              ><a href="" class="card-link"> #html</a>
+            </li>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 text-left card">
+          <div class="card-body project-list">
+            <h3 class="text-primary">Project 2</h3>
+
+            <li>Fried Lim, Tola Daniel</li>
+            <p>
+              Description: Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Culpa rerum distinctio illum dolorum cum, voluptates
+              inventore necessitatibus in porro impedit quo praesentium, modi
+              accusamus blanditiis expedita maxime atque nihil adipisci.
+            </p>
+            <li class="text-primary">
+              <a href="" class="card-link">#ejs,</a
+              ><a href="" class="card-link"> #ci</a>
+            </li>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 card text-left">
+          <div class="card-body project-list">
+            <h3 class="text-primary">Project 1</h3>
+
+            <li>James Li, Ade Brian</li>
+            <p>
+              Description: Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Culpa rerum distinctio illum dolorum cum, voluptates
+              inventore necessitatibus in porro impedit quo praesentium, modi
+              accusamus blanditiis expedita maxime atque nihil adipisci.
+            </p>
+            <li class="text-primary">
+              <a href="" class="card-link">#javascript,</a
+              ><a href="" class="card-link">#mongodb</a>
+            </li>
+          </div>
+        </div>
+      </div>
+      <footer>Project Explorer &copy 2020 <strong>Edconnect</strong></footer>
+    </div>
+  </body>
+</html>
