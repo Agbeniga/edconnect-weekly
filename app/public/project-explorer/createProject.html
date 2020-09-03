@@ -15,6 +15,7 @@
       <!-- <h2>One Stop Database for Final Year Projects</h2> -->
       <form action="" class="form-inline">
         <input
+        name="searchTerm"
           type="search"
           placeholder="Search Projects"
           class="form-control mr-sm-2"
@@ -23,14 +24,15 @@
           Search
         </button>
       </form>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav nav">
         <li class="nav-item">
           <a href="search.html " class="nav-link text-white-50">Projects</a>
         </li>
         <li class="nav-item">
           <a href="createProject.html" class="nav-link text-white-50">Submit</a>
         </li>
-
+</ul>
+        <ul class="navbar-nav nav ml-auto">
         <li class="nav-item nav-link text-white-50">Signed in as:</li>
         <li class="nav-item">
           <a href="login.html" class="nav-link text-light">Agbeniga Ajibola</a>
@@ -50,6 +52,7 @@
             <label for="Project-name">Project Name</label>
 
             <input
+              name="name"
               type="text"
               class="form-control"
               placeholder="Enter projetc name"

@@ -22,14 +22,15 @@
           Search
         </button>
       </form>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav nav">
         <li class="nav-item">
           <a href="search.html " class="nav-link text-white-50">Projects</a>
         </li>
         <li class="nav-item">
           <a href="createProject.html" class="nav-link text-white-50">Submit</a>
         </li>
-        
+        </ul>
+        <ul class="navbar-nav nav ml-auto">
         <li class="nav-item">
           <a href="login.html" class="nav-link text-white-50">Login</a>
         </li>
@@ -47,6 +48,7 @@
             <div class="col-lg-6 form-group">
               <label for="fname">First Name</label>
               <input
+                name="firstName"
                 type="text"
                 class="form-control"
                 placeholder="First name"
@@ -54,13 +56,14 @@
             </div>
             <div class="col-lg-6 form-group">
               <label for="lname">Last Name</label>
-              <input type="text" class="form-control" placeholder="Last name" />
+              <input type="text" class="form-control" name="lastName" placeholder="Last name" />
             </div>
           </div>
           <div class="row">
             <div class="col-lg-6 form-group">
               <label for="email">Email Address</label>
               <input
+              name="email"
                 type="email"
                 class="form-control"
                 placeholder="Enter Email address"
@@ -69,6 +72,7 @@
             <div class="col-lg-6 form-group">
               <label for="password">Password</label>
               <input
+              name="password"
                 type="password"
                 class="form-control"
                 placeholder="Your Password"
@@ -90,15 +94,16 @@
 
             <div class="col-lg-6">
               <div class="row">
-                <div class="col-lg-6 form-group">
+                <div class="col-lg-6 form-group mr-0">
                   <label for="matricNo">Matric Number</label><br />
                   <input
+                  name="matricNo"
                     type="text"
                     class="form-control"
                     placeholder="e.g 16/2020"
                   />
                 </div>
-                <div class="col-lg-6 form-group">
+                <div class="col-lg-6 form-group ml-0">
                   <label for="year">Year</label><br />
                   <select name="year" class="form-control">
                     <option value="2020">2020</option>

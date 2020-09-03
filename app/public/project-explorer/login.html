@@ -3,7 +3,7 @@
   <head>
     <title>Login</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
   </head>
   <body>
     <nav class="navbar navbar-expand-sm bg-primary">
@@ -13,6 +13,7 @@
       <!-- <h2>One Stop Database for Final Year Projects</h2> -->
       <form action="" class="form-inline ">
         <input
+        name="searchTerm"
           type="search"
           placeholder="Search Projects"
           class="form-control mr-sm-2"
@@ -21,14 +22,15 @@
           Search
         </button>
       </form>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav nav">
         <li class="nav-item">
           <a href="search.html " class="nav-link text-white-50">Projects</a>
         </li>
         <li class="nav-item">
           <a href="createProject.html" class="nav-link text-white-50">Submit</a>
         </li>
-        
+        </ul>
+        <ul class="navbar-nav nav ml-auto">
         <li class="nav-item">
           <a href="login.html" class="nav-link text-white-50">Login</a>
         </li>
@@ -47,7 +49,7 @@
 
             <input
               type="email"
-              name=""
+              name="email"
               class="form-control"
               placeholder="Enter Email"
             />
@@ -58,7 +60,7 @@
             <input
               type="password"
               class="form-control"
-              name=""
+              name="password"
               placeholder="Password "
             />
           </div>

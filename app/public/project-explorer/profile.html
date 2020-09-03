@@ -14,6 +14,7 @@
       <!-- <h2>One Stop Database for Final Year Projects</h2> -->
       <form action="" class="form-inline">
         <input
+        name="searchTerm"
           type="search"
           placeholder="Search Projects"
           class="form-control mr-sm-2"
@@ -22,14 +23,15 @@
           Search
         </button>
       </form>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav nav">
         <li class="nav-item">
           <a href="search.html " class="nav-link text-white-50">Projects</a>
         </li>
         <li class="nav-item">
           <a href="createProject.html" class="nav-link text-white-50">Submit</a>
         </li>
-        
+        </ul>
+        <ul class="navbar-nav nav ml-auto">
         <li class="nav-item nav-link text-white-50">
          Signed in as: 
         </li>
@@ -73,17 +75,18 @@
           <div class="row">
             <div class="col-lg-6 form-group">
               <label for="fname">First Name</label>
-              <input type="text" class="form-control" value="Ajibola" />
+              <input type="text" class="form-control" name="firstName" value="Ajibola" />
             </div>
             <div class="col-lg-6 form-group">
               <label for="lname">Last Name</label>
-              <input type="text" class="form-control" value="Agbeniga" />
+              <input type="text" class="form-control" name="lastName" value="Agbeniga" />
             </div>
           </div>
           <div class="row">
             <div class="col-lg-6 form-group">
               <label for="email">Email Address</label>
               <input
+                name="email"
                 type="email"
                 class="form-control"
                 value="ajibola123@edconnect.ng"
@@ -104,7 +107,7 @@
           <div class="row">
             <div class="col-lg-6 form-group">
               <label for="matricNo">Matric Number</label><br />
-              <input type="text" class="form-control" value="00/0000" />
+              <input type="text" name="matricNo" class="form-control" value="00/0000" />
             </div>
             <div class="col-lg-6 form-group">
               <label for="year">Year</label><br />
@@ -136,6 +139,7 @@
             <div class="col-lg-4 form-group">
               <label for="current-password">Current Password</label>
               <input
+              name="password"
                 type="password"
                 class="form-control"
                 placeholder="Current Password"
@@ -144,6 +148,7 @@
             <div class="col-lg-4 form-group">
               <label for="new-password">New Password</label>
               <input
+              name="password"
                 type="password"
                 class="form-control"
                 placeholder="Your New Password"
@@ -152,6 +157,7 @@
             <div class="col-lg-4 form-group">
               <label for="confirm-password">Confirm Password</label>
               <input
+              name="password"
                 type="password"
                 class="form-control"
                 placeholder="Confirm new password"
