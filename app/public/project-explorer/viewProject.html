@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>View Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm bg-primary mb-3">
+      <h2>
+        <a href="index.html" class="text-light nav-link small">Project Explorer </a>
+      </h2>
+      <!-- <h2>One Stop Database for Final Year Projects</h2> -->
+      <form action="" class="form-inline" id="loginForm">
+        <input
+        name="searchTerm"
+          type="text"
+          placeholder="Search Projects"
+          class="form-control mr-sm-1 form-control-sm"
+        />
+        <button type="submit" class="btn nav-button btn-outline-light btn-sm">
+          Search
+        </button>
+      </form>
+      <ul class="navbar-nav nav">
+        <li class="nav-item">
+          <a href="search.html " class="nav-link text-white-50">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a href="createProject.html" class="nav-link text-white-50">Submit</a>
+        </li>
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="login.html" class="nav-link text-white-50">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="register.html" class="nav-link text-white-50">Register</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <br />
+    <br />
+    <div class="container">
+      <h2 id="project_name">Project 4</h2>
+      <div class="jumbotron py-2 pl-1">
+        <ul class="row align-items-center">
+          <div class="col-3">
+            <li class="list-unstyled">Created By</li>
+            <li class="list-unstyled" id="project_authors">Ade Ade</li>
+          </div>
+          <div class="col-3">
+            <li class="list-unstyled">
+              Date Created
+            </li>
+            <li class="list-unstyled">03/03/2020</li>
+          </div>
+          <div class="col-3">
+            <li class="list-unstyled">Last Updated</li>
+            <li class="list-unstyled">04/04/2020</li>
+          </div>
+          <div class="col-3">
+            <a href="editProject.html" class="btn btn-primary">
+         
+                Edit Project
+          
+            </a>
+          </div>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <h2>Project Abstarct</h2>
+          <p id="project_abstract">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, eum.
+            Reiciendis ex maxime, corrupti culpa nam impedit placeat quam quidem
+            iusto. Rerum quisquam ipsam eligendi harum numquam minima, quis
+            molestias magnam quaerat maiores, ratione porro voluptatum nemo non
+            iusto error, aliquid molestiae enim! Officiis animi quo omnis
+            pariatur blanditiis nobis!
+          </p>
+        </div>
+        <div class="col-6">
+          
+          <h2>
+            Project Details
+          </h2>
+          <div class="card" >
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-secondary">Author(s)</li>
+            <div id="project_authors">
+              <li class="list-group-item">Henry James</li>
+              <li class="list-group-item">Bola Ade</li>
+            </div>
+            <div id="project_tags">
+            <li class="list-group-item list-group-item-secondary text-primary" id="project_tags">#yaml, #ejs</li>
+          </div>
+            <!-- <li class="list-group-item list-group-item-secondary">
+              Project Files
+            </li>
+            <li class="list-group-item">
+             No File uploaded yet
+            </li> -->
+          </ul>
+          </div>
+          <br> 
+          <div class="card">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-secondary">
+              Project Files
+            </li>
+            <li class="list-group-item text-center">
+             No File uploaded yet
+            </li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <footer class="page-footer font-small bg-secondary">
+        <div class="footer-copyright text-right py-2 pr-2">
+          Project Explorer &copy 2020 <strong>Edconnect</strong>
+        </div>
+      </footer>
+      <br />
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>

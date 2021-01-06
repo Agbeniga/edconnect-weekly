@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-primary">
+      <h2>
+        <a href="index.html" class="text-light nav-link small">Project Explorer </a>
+      </h2>
+      <!-- <h2>One Stop Database for Final Year Projects</h2> -->
+      <form action="" class="form-inline">
+        <input
+          type="text"
+          placeholder="Search Projects"
+          class="form-control mr-sm-2 form-control-sm"
+        />
+        <button type="submit" class="btn nav-button btn-outline-light btn-sm">
+          Search
+        </button>
+      </form>
+      <ul class="navbar-nav nav">
+        <li class="nav-item">
+          <a href="search.html " class="nav-link text-white-50">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a href="createProject.html" class="nav-link text-white-50">Submit</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav ml-auto">
+        <li class="nav-item">
+          <a href="login.html" class="nav-link text-white-50">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="register.html" class="nav-link text-white-50">Register</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- <br /> -->
+    <div class="container">
+      <div class="align-items-center text-left w-50 mx-auto">
+        <h2 id="loginTitle">Login</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+
+            <input
+              type="email"
+              name="email"
+              class="form-control form-control-sm"
+              placeholder="Enter Email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+
+            <input
+              type="password"
+              class=" form-control form-control-sm"
+              name="password"
+              placeholder="Password "
+            />
+          </div>
+          <button type="submit" class="btn btn-primary" id="loginButton">
+            Login
+          </button>
+        </form>
+      </div>
+      <br>
+      <footer class="page-footer  font-small bg-secondary">
+        <div class="footer-copyright text-right py-2 pr-2">
+          Project Explorer &copy 2020 <strong>Edconnect</strong>
+        </div>
+      </footer>
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>
