@@ -43,8 +43,6 @@ function appendProgram(programName) {
     programList.appendChild(program);
 }
 
-
-
 function appendGraduationYears(yearDate) {
     var year = document.createElement('option');
     year.value = yearDate;
@@ -63,7 +61,8 @@ function error(errorText, parentDiv) {
         program.appendChild(newLine);
     }
     let title = document.getElementById(parentDiv);
-    title.appendChild(program);
+    // title.appendChild(program);
+    title.innerHTML = `${program}`;
 }
 
 function isLoggedIn() {
@@ -108,18 +107,16 @@ function appendProject(project) {
     projectTag.className = "text-primary list-unstyled";
     for (let index = 0; index < project['tags'].length; index++) {
         var projectTagLink = document.createElement('a');
-
         projectTagLink.className = "card-link";
         projectTagLink.href = "#";
         var tag = document.createTextNode(`#${project['tags'][index]}`);
         projectTagLink.appendChild(tag);
         projectTag.appendChild(projectTagLink);
-
-
     }
     // 
 
     projectCardBody.appendChild(projectTag);
+    // console.log(projectContainer);
 
     projectContainer.appendChild(createproject);
 }
@@ -127,7 +124,6 @@ function appendProject(project) {
 //      Navbar: Updates navbar if user has loged in
 function updateNavbar(userName) {
     navbarMenu.innerHTML = "";
-
     let createElement = document.createElement('ul');
     createElement.className = "navbar-nav nav ml-auto";
     // 
@@ -173,12 +169,12 @@ function updateProject(projectName, projectAbstract, authorList, tagList) {
         authorlist.appendChild(authorlistTextNode);
         updateProjectAuthors.appendChild(authorlist);
     }
-    
-    let tagList = "";
+
+    let taglist = "";
     for (let index = 0; index < tagList.length; index++) {
-        tagList += "#" + tagList[index] + " ";
+        taglist += "#" + tagList[index] + " ";
     }
-    updateProjectTags.innerHTML = tagList;
+    updateProjectTags.innerHTML = taglist;
 }
 
 
@@ -207,7 +203,7 @@ function loadYears() {
 }
 
 function onSignUpButtonClick(err) {
-    document.cookie = "";
+    document.cookie = `uid=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     fetch('/api/register',
         {
             method: 'POST',
@@ -233,7 +229,7 @@ function onSignUpButtonClick(err) {
             return response.json();
         } else {
             response.json().then(errorText => {
-                error(errorText["errors"], "signupTitle");
+                error(errorText["errors"], "loginForm");
                 throw Error("Bad request");
             });
         }
@@ -249,7 +245,6 @@ function onSignUpButtonClick(err) {
 
 
 // Index  Page
-
 function onLoadIndexPage() {
     let cookieExist = document.cookie.split(';').some((item) => item.trim().startsWith('uid='));
     console.log(`cookie exist ${cookieExist}`);
@@ -257,7 +252,6 @@ function onLoadIndexPage() {
         // let uid = document.cookie.split(";")[0].substr(4);
         let uid = document.cookie.split(';').find(row => row.startsWith('uid')).split('=')[1];
         console.log(`cookie exist ${uid}`);
-
         fetch(`/api/users/${uid}`).then(
             response => {
                 response.json().then(function (data) {
@@ -269,14 +263,11 @@ function onLoadIndexPage() {
                 });
             }
         );
-    } else {
-
-
-    }
+    } 
 }
 
 function onLoginButtonClick(evnt) {
-    document.cookie = "";
+    document.cookie = `uid=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     fetch('/api/login',
         {
             method: 'POST',
@@ -315,7 +306,11 @@ function onLoginButtonClick(evnt) {
 // Create Project
 function onCreateProjectButtonClick(evnt) {
     let cookieExist = document.cookie.split(';').some((item) => item.trim().startsWith('uid='));
+    console.log(`cookie exist ${cookieExist}`);
     if (cookieExist) {
+        // let uid = document.cookie.split(";")[0].substr(4);
+        let uid = document.cookie.split(';').find(row => row.startsWith('uid')).split('=')[1];
+        console.log(`cookie exist ${uid}`);
         fetch('/api/projects',
             {
                 method: 'POST',
@@ -337,7 +332,7 @@ function onCreateProjectButtonClick(evnt) {
                 return response.json();
             } else {
                 response.json().then(errorText => {
-                    error(errorText["errors"], "createProjectTitle");
+                    error(errorText["errors"], "createProjectForm");
                     throw Error("Bad request");
                 });
             }
@@ -404,7 +399,7 @@ function getProject() {
 }
 
 function logoutUser() {
-    document.cookie = ``;
+    document.cookie = `uid=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     window.location.replace('index.html');
 }
 
@@ -427,14 +422,17 @@ else if (currentPath.includes("register.html")) {
 else if (currentPath.includes("viewProject.html")) {
 
     projectList();
-    logoutUser();
+    // let logoutElement = document.getElementById("logout");
+    // logoutElement.addEventListener('click', logoutUser);
 }
 else if (currentPath.includes("createProject.html")) {
     createProjectButton.addEventListener('click', onCreateProjectButtonClick);
-    logoutUser();
+    // let logoutElement = document.getElementById("logout");
+    // logoutElement.addEventListener('click', logoutUser);
 
 }
 else if (currentPath.includes("viewProject.html")) {
     getProject();
-    logoutUser();
+    // let logoutElement = document.getElementById("logout");
+    // logoutElement.addEventListener('click', logoutUser);
 }
