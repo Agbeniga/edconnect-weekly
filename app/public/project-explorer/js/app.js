@@ -26,6 +26,8 @@ const createProjectButton = document.getElementById("createProjectButton");
 const updateProjectName = document.getElementById("project_name");
 const updateProjectAbstract = document.getElementById("project_abstract");
 const updateProjectAuthors = document.getElementById("project_authors");
+const updateProjectAuthor = document.getElementById("project_author");
+
 const updateProjectTags = document.getElementById("project_tags");
 
 const projectContainer = document.querySelector(".container .showcase");
@@ -52,17 +54,13 @@ function appendGraduationYears(yearDate) {
 }
 
 function error(errorText, parentDiv) {
-    let program = document.createElement('div');
-    program.className = "alert alert-danger h4 small";
-    for (let i = 0; i < errorText.length; i++) {
-        let node = document.createTextNode(errorText[i]);
-        program.appendChild(node);
-        let newLine = document.createElement('br');
-        program.appendChild(newLine);
-    }
+    
     let title = document.getElementById(parentDiv);
-    // title.appendChild(program);
-    title.innerHTML = `${program}`;
+    let errorMessages = "";
+    errorText.forEach((message)=>{
+        errorMessages  += message + "<br>";
+    });
+    title.innerHTML = "<div class='alert alert-danger h4 small'>" + errorMessages + " </div>";
 }
 
 function isLoggedIn() {
@@ -118,7 +116,7 @@ function appendProject(project) {
     projectCardBody.appendChild(projectTag);
     // console.log(projectContainer);
 
-    projectContainer.appendChild(createproject);
+    // projectContainer.appendChild(createproject);
 }
 
 //      Navbar: Updates navbar if user has loged in
@@ -158,16 +156,19 @@ function updateNavbar(userName) {
     navbarMenu.appendChild(createElement);
 }
 
-function updateProject(projectName, projectAbstract, authorList, tagList) {
+function updateProject(projectName, projectAbstract, authorList, tagList, createdBy) {
     updateProjectName.innerHTML = projectName;
     updateProjectAbstract.innerHTML = projectAbstract;
+    updateProjectAuthor.innerHTML = createdBy;
 
+    updateProjectAuthors.innerHTML = "";
     for (let index = 0; index < authorList.length; index++) {
         let authorlist = document.createElement('li');
         authorlist.className = "list-group-item";
         let authorlistTextNode = document.createTextNode(authorList[index]);
         authorlist.appendChild(authorlistTextNode);
         updateProjectAuthors.appendChild(authorlist);
+
     }
 
     let taglist = "";
@@ -175,6 +176,8 @@ function updateProject(projectName, projectAbstract, authorList, tagList) {
         taglist += "#" + tagList[index] + " ";
     }
     updateProjectTags.innerHTML = taglist;
+    updateProjectTags.className = "list-group-item list-group-item-secondary text-primary";
+    // console.log(updateProjectTags);
 }
 
 
@@ -229,7 +232,7 @@ function onSignUpButtonClick(err) {
             return response.json();
         } else {
             response.json().then(errorText => {
-                error(errorText["errors"], "loginForm");
+                error(errorText["errors"], "signupTitle");
                 throw Error("Bad request");
             });
         }
@@ -263,7 +266,7 @@ function onLoadIndexPage() {
                 });
             }
         );
-    } 
+    }
 }
 
 function onLoginButtonClick(evnt) {
@@ -373,30 +376,21 @@ function projectId() {
 
     var searchParams = new URLSearchParams(currentPath);
     for ([key, value] of searchParams) {
-        // console.log(`${key}  =  ${value}`);
+        console.log(`${key}  =  ${value}`);
         return value;
     }
 }
 
-function getProject() {
-    fetch(`/api/projects/${projectId()}`).then(
-        // response => {
-        //     if (response.ok) {
-        //         console.log( response.json());
-        //     } else {
-        //         response.json().then(errorText => {
-        //             console.log(errorText);
-        //             throw Error("Bad request");
-        //         });
-        //     }
-        response => {
-            response.json().then(function (data) {
-                console.log(data);
-            }
-            );
-        }
-    );
-}
+const getProject = async () => {
+    const res = await fetch(`/api/projects/${projectId()}`);
+    const projectData = await res.json();
+    const userDataRes = await fetch(`/api/users/${projectData["createdBy"]}`);
+    const userData = await userDataRes.json();
+    const fullName = userData["firstname"] + " " + userData["lastname"];
+
+    updateProject(projectData["name"], projectData["abstract"], projectData["authors"], projectData["tags"], fullName);
+
+};
 
 function logoutUser() {
     document.cookie = `uid=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
@@ -419,12 +413,7 @@ else if (currentPath.includes("register.html")) {
     loadYears();
     signUpButton.addEventListener('click', onSignUpButtonClick);
 }
-else if (currentPath.includes("viewProject.html")) {
 
-    projectList();
-    // let logoutElement = document.getElementById("logout");
-    // logoutElement.addEventListener('click', logoutUser);
-}
 else if (currentPath.includes("createProject.html")) {
     createProjectButton.addEventListener('click', onCreateProjectButtonClick);
     // let logoutElement = document.getElementById("logout");
