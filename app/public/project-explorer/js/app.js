@@ -122,16 +122,12 @@ function createNavBar(userName) {
     // 
     let createSignedInElement = document.createElement('li');
     createSignedInElement.className = "nav-item nav-link text-white-50 small pr-0 mr-0";
-    
-    
     let nameAnchorTag = document.createElement("a");
     nameAnchorTag.href = "profile.html";
-    nameAnchorTag.className = "nav-link text-light";
-    nameAnchorTag.id = "username";
-    let nameTextNode = document.createTextNode(`Hi, ${userName}`);
-    nameAnchorTag.appendChild(nameTextNode);
+    nameAnchorTag.className = "text-light";
+    let signinTextNode = document.createTextNode(`Hi, ${userName}`);
+    nameAnchorTag.appendChild(signinTextNode);
     createSignedInElement.appendChild(nameAnchorTag);
-    // 
     let createLogoutElement = document.createElement('li');
     createLogoutElement.className = "nav-item";
     let logoutAnchorTag = document.createElement("a");
@@ -143,6 +139,7 @@ function createNavBar(userName) {
     createLogoutElement.appendChild(logoutAnchorTag);
     // 
     createElement.appendChild(createSignedInElement);
+    // createElement.appendChild(createNameElement);
     createElement.appendChild(createLogoutElement);
     // 
     navbarMenu.appendChild(createElement);
