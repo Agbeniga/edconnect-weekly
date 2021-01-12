@@ -54,7 +54,7 @@ function appendGraduationYears(yearDate) {
 }
 
 function error(errorText) {
-    
+
     let errorTag = document.getElementById("error");
     errorTag.innerHTML = "<div class='alert alert-danger h3 small'>" + errorText.join("<br>") + " </div>";
 }
@@ -307,46 +307,37 @@ function onLoginButtonClick(err) {
 
 // Create Project
 function onCreateProjectButtonClick(evnt) {
-    let cookieExist = document.cookie.split(';').some((item) => item.trim().startsWith('uid='));
-    // console.log(`cookie exist ${cookieExist}`);
-    if (cookieExist) {
-        // let uid = document.cookie.split(";")[0].substr(4);
-        let uid = document.cookie.split(';').find(row => row.startsWith('uid')).split('=')[1];
-        // console.log(`cookie exist ${uid}`);
-        fetch('/api/projects',
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(
-                    {
-                        "name": projectNameValue.value,
+    fetch('/api/projects',
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(
+                {
+                    "name": projectNameValue.value,
 
-                        "abstract": projectAbstractValue.value,
+                    "abstract": projectAbstractValue.value,
 
-                        "authors": projectAuthorValue.value.split(","),
+                    "authors": projectAuthorValue.value.split(","),
 
-                        "tags": projectTagValue.value.split(","),
-                    },
-                ),
-            }
-        ).then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                response.json().then(errorText => {
-                    error(errorText["errors"], "createProjectForm");
-                    throw Error("Bad request");
-                });
-            }
-        }).then(data => {
-            window.location.replace('index.html');
-        }).catch(e => {
-            // console.log(e);
-        });
-        evnt.preventDefault();
-    } else {
-        window.location.replace('login.html');
-    }
+                    "tags": projectTagValue.value.split(","),
+                },
+            ),
+        }
+    ).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            response.json().then(errorText => {
+                error(errorText["errors"], "createProjectForm");
+                throw Error("Bad request");
+            });
+        }
+    }).then(data => {
+        window.location.replace('index.html');
+    }).catch(e => {
+        // console.log(e);
+    });
+    evnt.preventDefault();
 }
 
 function projectList() {
@@ -401,9 +392,9 @@ function logoutUser() {
 if (currentPath.includes("index.html")) {
     updateNavbar();
     projectList();
-    
+
     let logoutElement = document.getElementById("logout");
-    if(logoutElement !== null){
+    if (logoutElement !== null) {
         logoutElement.addEventListener('click', logoutUser);
     }
 
@@ -420,11 +411,16 @@ else if (currentPath.includes("register.html")) {
 }
 
 else if (currentPath.includes("createProject.html")) {
-    createProjectButton.addEventListener('click', onCreateProjectButtonClick);
-    updateNavbar();
-    let logoutElement = document.getElementById("logout");
-    if(logoutElement !== null){
-        logoutElement.addEventListener('click', logoutUser);
+
+    if (isLoggedIn()) {
+        createProjectButton.addEventListener('click', onCreateProjectButtonClick);
+        updateNavbar();
+        let logoutElement = document.getElementById("logout");
+        if (logoutElement !== null) {
+            logoutElement.addEventListener('click', logoutUser);
+        }
+    } else {
+        window.location.replace('login.html');
     }
 
 
@@ -433,14 +429,14 @@ else if (currentPath.includes("viewProject.html")) {
     getProject();
     updateNavbar();
     let logoutElement = document.getElementById("logout");
-    if(logoutElement !== null){
+    if (logoutElement !== null) {
         logoutElement.addEventListener('click', logoutUser);
     }
 }
 else if (currentPath.includes("search.html")) {
     updateNavbar();
     let logoutElement = document.getElementById("logout");
-    if(logoutElement !== null){
+    if (logoutElement !== null) {
         logoutElement.addEventListener('click', logoutUser);
     }
 }
