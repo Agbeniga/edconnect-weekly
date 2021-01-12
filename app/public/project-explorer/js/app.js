@@ -127,6 +127,7 @@ function createNavBar(userName) {
     // 
     let createNameElement = document.createElement('li');
     createNameElement.className = "nav-item";
+    createNameElement.id = "username";
     let nameAnchorTag = document.createElement("a");
     nameAnchorTag.href = "profile.html";
     nameAnchorTag.className = "nav-link text-light small";
