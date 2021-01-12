@@ -8,19 +8,22 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm bg-primary">
-      <h2>
-        <a href="index.html" class="text-light nav-link">Project Explorer </a>
-      </h2>
-      <!-- <h2>One Stop Database for Final Year Projects</h2> -->
-      <form action="" class="form-inline">
-        <input
-        name="searchTerm"
-          type="text"
+    <nav class="navbar navbar-expand-sm bg-primary mb-3">
+      <a href="index.html" class="text-light navbar-brand"
+        >Project Explorer
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsedNavbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsedNavbar"> 
+        <form class="form-inline">
+          <input
+          type="search"
           placeholder="Search Projects"
-          class="form-control mr-sm-2"
+          class="form-control mr-sm-1 form-control-sm"
+          aria-label="Search"
         />
-        <button type="submit" class="btn nav-button btn-outline-light">
+        <button type="submit" class="btn nav-button btn-outline-light btn-sm">
           Search
         </button>
       </form>
@@ -43,7 +46,7 @@
           </ul>
         </div>
     </nav>
-    <br />
+  <br />
     <br />
     <div class="container">
       <div class="row">

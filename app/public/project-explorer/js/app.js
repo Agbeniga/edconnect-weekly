@@ -53,14 +53,10 @@ function appendGraduationYears(yearDate) {
     yearList.appendChild(year);
 }
 
-function error(errorText, parentDiv) {
+function error(errorText) {
     
-    let title = document.getElementById(parentDiv);
-    let errorMessages = "";
-    errorText.forEach((message)=>{
-        errorMessages  += message + "<br>";
-    });
-    title.innerHTML = "<div class='alert alert-danger h4 small'>" + errorMessages + " </div>";
+    let errorTag = document.getElementById("error");
+    errorTag.innerHTML = "<div class='alert alert-danger h3 small'>" + errorText.join("<br>") + " </div>";
 }
 
 function isLoggedIn() {
@@ -81,7 +77,7 @@ function appendProject(project) {
     projectCardBody.className = "card-body";
     projectCard.appendChild(projectCardBody);
     // 
-    let projectTitle = document.createElement('h3');
+    let projectTitle = document.createElement('h5');
     projectTitle.className = "text-primary card-title";
     let titleAnchorTag = document.createElement("a");
     titleAnchorTag.href = `viewProject.html?id=${project['id']}`;
@@ -114,13 +110,12 @@ function appendProject(project) {
     // 
 
     projectCardBody.appendChild(projectTag);
-    // console.log(projectContainer);
 
-    // projectContainer.appendChild(createproject);
+    projectContainer.appendChild(createproject);
 }
 
 //      Navbar: Updates navbar if user has loged in
-function updateNavbar(userName) {
+function createNavBar(userName) {
     navbarMenu.innerHTML = "";
     let createElement = document.createElement('ul');
     createElement.className = "navbar-nav nav ml-auto";
@@ -238,7 +233,7 @@ function onSignUpButtonClick(err) {
         }
     }).then(data => {
         let key = "uid";
-        let value = data["id"];
+        let value = data["data"]["id"];
         document.cookie = `${key}=${value};path=/;`;
         window.location.replace('index.html');
     }).catch(e => {
@@ -248,18 +243,16 @@ function onSignUpButtonClick(err) {
 
 
 // Index  Page
-function onLoadIndexPage() {
-    let cookieExist = document.cookie.split(';').some((item) => item.trim().startsWith('uid='));
-    console.log(`cookie exist ${cookieExist}`);
-    if (cookieExist) {
+function updateNavbar() {
+    if (isLoggedIn()) {
         // let uid = document.cookie.split(";")[0].substr(4);
         let uid = document.cookie.split(';').find(row => row.startsWith('uid')).split('=')[1];
-        console.log(`cookie exist ${uid}`);
+        // console.log(`cookie exist ${uid}`);
         fetch(`/api/users/${uid}`).then(
             response => {
                 response.json().then(function (data) {
                     let userFirstName = data["firstname"];
-                    updateNavbar(userFirstName);
+                    createNavBar(userFirstName);
 
                 }).catch(e => {
                     console.log(e);
@@ -269,51 +262,56 @@ function onLoadIndexPage() {
     }
 }
 
-function onLoginButtonClick(evnt) {
+function onLoginButtonClick(err) {
     document.cookie = `uid=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     fetch('/api/login',
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-
                 "email": emailValue.value,
 
                 "password": passwordValue.value,
-            },
-            ),
+            })
         }
     ).then(response => {
         if (response.ok) {
             return response.json();
         } else {
             response.json().then(errorText => {
+                // error(errorText["errors"], "signupTitle");
+                // console.log(errorText);
                 let errorMessage = ['Invalid email/password'];
-                error(errorMessage, "loginTitle");
-                throw Error("Bad request");
+                // console.log(errorText);
+                error(errorMessage);
+                // throw Error("Bad request");
             });
         }
     }).then(data => {
         let key = "uid";
-        let value = data["data"].id;
+        let value = data["data"]["id"];
         document.cookie = `${key}=${value};path=/;`;
         window.location.replace('index.html');
     }).catch(e => {
-        // console.log(e);
+        console.log(e.message);
     });
-    evnt.preventDefault();
+    err.preventDefault();
 }
+
+
+
+
 
 
 
 // Create Project
 function onCreateProjectButtonClick(evnt) {
     let cookieExist = document.cookie.split(';').some((item) => item.trim().startsWith('uid='));
-    console.log(`cookie exist ${cookieExist}`);
+    // console.log(`cookie exist ${cookieExist}`);
     if (cookieExist) {
         // let uid = document.cookie.split(";")[0].substr(4);
         let uid = document.cookie.split(';').find(row => row.startsWith('uid')).split('=')[1];
-        console.log(`cookie exist ${uid}`);
+        // console.log(`cookie exist ${uid}`);
         fetch('/api/projects',
             {
                 method: 'POST',
@@ -389,6 +387,8 @@ const getProject = async () => {
     const fullName = userData["firstname"] + " " + userData["lastname"];
 
     updateProject(projectData["name"], projectData["abstract"], projectData["authors"], projectData["tags"], fullName);
+    updateNavbar();
+
 
 };
 
@@ -398,13 +398,17 @@ function logoutUser() {
 }
 
 if (currentPath.includes("index.html")) {
-    onLoadIndexPage();
+    updateNavbar();
     projectList();
+    
     let logoutElement = document.getElementById("logout");
-    logoutElement.addEventListener('click', logoutUser);
+    if(logoutElement !== null){
+        logoutElement.addEventListener('click', logoutUser);
+    }
 
 }
 else if (currentPath.includes("login.html")) {
+
     loginButton.addEventListener('click', onLoginButtonClick);
 
 }
@@ -416,12 +420,26 @@ else if (currentPath.includes("register.html")) {
 
 else if (currentPath.includes("createProject.html")) {
     createProjectButton.addEventListener('click', onCreateProjectButtonClick);
-    // let logoutElement = document.getElementById("logout");
-    // logoutElement.addEventListener('click', logoutUser);
+    updateNavbar();
+    let logoutElement = document.getElementById("logout");
+    if(logoutElement !== null){
+        logoutElement.addEventListener('click', logoutUser);
+    }
+
 
 }
 else if (currentPath.includes("viewProject.html")) {
     getProject();
-    // let logoutElement = document.getElementById("logout");
-    // logoutElement.addEventListener('click', logoutUser);
+    updateNavbar();
+    let logoutElement = document.getElementById("logout");
+    if(logoutElement !== null){
+        logoutElement.addEventListener('click', logoutUser);
+    }
+}
+else if (currentPath.includes("search.html")) {
+    updateNavbar();
+    let logoutElement = document.getElementById("logout");
+    if(logoutElement !== null){
+        logoutElement.addEventListener('click', logoutUser);
+    }
 }

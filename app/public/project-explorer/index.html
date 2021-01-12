@@ -7,46 +7,44 @@
     <!-- <link rel="stylesheet" href="css/style.css" /> -->
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm bg-primary">
-      <h2>
-        <a href="index.html" class="text-light navbar-brand"
-          >Project Explorer
-        </a>
-      </h2>
-      <!-- <h2>One Stop Database for Final Year Projects</h2> -->
-      <form action="" class="form-inline">
-        <input
-          type="text"
+    <nav class="navbar navbar-expand-sm bg-primary mb-3">
+      <a href="index.html" class="text-light navbar-brand"
+        >Project Explorer
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsedNavbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsedNavbar"> 
+        <form class="form-inline">
+          <input
+          type="search"
           placeholder="Search Projects"
-          class="form-control mr-sm-2"
+          class="form-control mr-sm-1 form-control-sm"
+          aria-label="Search"
         />
-        <button type="submit" class="btn nav-button btn-outline-light">
+        <button type="submit" class="btn nav-button btn-outline-light btn-sm">
           Search
         </button>
       </form>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav nav">
         <li class="nav-item">
           <a href="search.html " class="nav-link text-white-50">Projects</a>
         </li>
         <li class="nav-item">
           <a href="createProject.html" class="nav-link text-white-50">Submit</a>
         </li>
-      </ul>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarMenu">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a href="login.html" class="nav-link text-white-50">Login</a>
-          </li>
-          <li class="nav-item">
-            <a href="register.html" class="nav-link text-white-50">Register</a>
-          </li>
         </ul>
-      </div>
-    </nav>
-    <br />
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="login.html" class="nav-link text-white-50">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="register.html" class="nav-link text-white-50">Register</a>
+            </li>
+          </ul>
+        </div>
+    </nav><br />
     <div class="container">
       <div class="jumbotron">
         <h2>Welcome to Projects Explorer</h2>
@@ -152,9 +150,9 @@
       </footer>
       <br />
     </div>
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     
   </body>
   <script src="js/app.js"></script>

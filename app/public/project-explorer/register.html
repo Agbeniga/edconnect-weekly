@@ -8,16 +8,20 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm bg-primary">
-      <h2>
-        <a href="index.html" class="text-light nav-link small">Project Explorer </a>
-      </h2>
-      <!-- <h2>One Stop Database for Final Year Projects</h2> -->
-      <form action="" class="form-inline">
-        <input
-          type="text"
+    <nav class="navbar navbar-expand-sm bg-primary mb-3">
+      <a href="index.html" class="text-light navbar-brand"
+        >Project Explorer
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsedNavbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsedNavbar"> 
+        <form class="form-inline">
+          <input
+          type="search"
           placeholder="Search Projects"
-          class="form-control mr-sm-2 form-control-sm"
+          class="form-control mr-sm-1 form-control-sm"
+          aria-label="Search"
         />
         <button type="submit" class="btn nav-button btn-outline-light btn-sm">
           Search
@@ -30,23 +34,24 @@
         <li class="nav-item">
           <a href="createProject.html" class="nav-link text-white-50">Submit</a>
         </li>
-      </ul>
-      <ul class="navbar-nav nav ml-auto">
-        <li class="nav-item">
-          <a href="login.html" class="nav-link text-white-50">Login</a>
-        </li>
-        <li class="nav-item">
-          <a href="register.html" class="nav-link text-white-50">Register</a>
-        </li>
-      </ul>
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="login.html" class="nav-link text-white-50">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="register.html" class="nav-link text-white-50">Register</a>
+            </li>
+          </ul>
+        </div>
     </nav>
-    <br /><br />
+  <br /><br />
     <div class="container">
       <div class="w-75 mx-auto">
         <h2 id="signupTitle">Sign Up</h2>
-        
-        <form >
-          <div id="signupForm"></div>
+        <div id="error"></div>
+        <form id="signupForm">
           <div class="row">
             <div class="col-lg-6 form-group">
               <label for="fname">First Name</label>
