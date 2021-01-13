@@ -59,10 +59,32 @@ function error(errorText) {
     errorTag.innerHTML = "<div class='alert alert-danger h3 small'>" + errorText.join("<br>") + " </div>";
 }
 
-function isLoggedIn() {
-    let cookieExist = document.cookie.split(';').some((item) => item.trim().startsWith('uid='));
-    return cookieExist;
-}
+// function isLoggedIn() {
+//     let cookieExist = document.cookie.split(';').some((item) => item.trim().startsWith('uid='));
+//     return cookieExist;
+// }
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+   
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  
+//   console.log(getCookie("uid"));
+  
+
 
 function appendProject(project) {
     // 
@@ -245,10 +267,11 @@ function onSignUpButtonClick(err) {
 
 // Index  Page
 function updateNavbar() {
-    if (isLoggedIn()) {
+    if (getCookie("uid") !== "") {
         // let uid = document.cookie.split(";")[0].substr(4);
-        let uid = document.cookie.split(';').find(row => row.startsWith('uid')).split('=')[1];
+        // let uid = document.cookie.split(';').find(row => row.startsWith('uid')).split('=')[1];
         // console.log(`cookie exist ${uid}`);
+        let uid = getCookie("uid");
         fetch(`/api/users/${uid}`).then(
             response => {
                 response.json().then(function (data) {
@@ -412,7 +435,7 @@ else if (currentPath.includes("register.html")) {
 
 else if (currentPath.includes("createProject.html")) {
 
-    if (isLoggedIn()) {
+    if (getCookie("uid") !== "") {
         createProjectButton.addEventListener('click', onCreateProjectButtonClick);
         updateNavbar();
         let logoutElement = document.getElementById("logout");
