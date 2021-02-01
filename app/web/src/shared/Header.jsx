@@ -19,8 +19,9 @@ const CreateNavBarElement = (props) => {
 
     return <>
         <Nav className="ml-auto">
-            <Nav.Link  className="text-white-50 small pr-0 mr-0" id="username">{`Hi, ${props.userName}`}</Nav.Link>
             <Nav.Link onClick={()=>logoutUser("/login")} className=" text-white-50 small">logout</Nav.Link>
+            <Nav.Link  className="text-white-50 small pr-0 mr-0" id="username">{`Hi, ${props.userName}`}</Nav.Link>
+            
         </Nav>
     </>;
 }
@@ -51,6 +52,7 @@ const Header = () => {
     }
 
     useEffect(() => {
+
         setCookie(getCookie("uid"));
 
 
@@ -70,12 +72,25 @@ const Header = () => {
             );
         }
 
-    }, [cookie, firstName]);
+        console.log(`cookie: ${cookie} firstname: ${firstName}`);
+
+    });
 
     function logoutUser(parameter) {
         
         document.cookie = `uid=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
         history.push(parameter);
+    }
+
+    function createProject() {
+        if(cookie !== ""){
+            history.push("/projects/submit");
+        }else{
+            logoutUser("/login");
+
+        }
+        
+        
     }
     return (
         <>
@@ -97,7 +112,7 @@ const Header = () => {
 
                         <Nav>
                             <Nav.Link href="/projects" className="text-white-50">Projects</Nav.Link>
-                            <Nav.Link href="/projects/submit" className="nav-link text-white-50">Submit</Nav.Link>
+                            <Nav.Link onClick={()=>createProject()} className="nav-link text-white-50">Submit</Nav.Link>
                         </Nav>
                         {firstName !== "" ?
 

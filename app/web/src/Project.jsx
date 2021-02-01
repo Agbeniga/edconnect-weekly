@@ -18,8 +18,10 @@ const Project = () =>{
 
     useEffect(()=>
     {
+        
         const getProject = async () => {
-            const res = await fetch(`/api/projects/${id}`);
+            const projectId = id;
+            const res = await fetch(`/api/projects/${projectId}`);
             const projectData = await res.json();
             const userDataRes = await fetch(`/api/users/${projectData["createdBy"]}`);
             const userData = await userDataRes.json();
