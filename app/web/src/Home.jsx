@@ -1,5 +1,6 @@
+import { useState, useEffect,React } from 'react';
 import { Button, Card, Jumbotron } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+
 
 const Home = () => {
 
