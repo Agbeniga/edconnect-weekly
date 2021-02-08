@@ -116,7 +116,7 @@ const Project = () =>{
          
             </ListGroup>
             <Card.Footer>
-            <Card.Link >{tags}</Card.Link>
+            <Card.Link id="project_tags">{tags}</Card.Link>
             {/* {tags.map((value)=>(
                      <Card.Link key={value}>{value}</Card.Link>
                      ))} */}
