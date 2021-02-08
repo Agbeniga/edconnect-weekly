@@ -1,6 +1,7 @@
-import {React, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Col, FormControl } from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
+import Layout from './shared/Layout';
 
 
 const FormGroup = (props) => {
@@ -76,6 +77,7 @@ const CreateProject = () => {
 
 
     return (
+        <Layout>
         <div className="container">
             <div className="w-50 mx-auto">
                 <h2 id="createProjectTitle">Submit Project</h2>
@@ -105,7 +107,8 @@ const CreateProject = () => {
                 </Form>
 
             </div>
-        </div>);
+        </div>
+        </Layout>);
 
 }
 

@@ -1,6 +1,7 @@
-import {useState, useEffect, React} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link , useParams, useHistory} from 'react-router-dom';
 import {Card, Row, Col, ListGroup, ListGroupItem, Button, Form} from 'react-bootstrap';
+import Layout from './shared/Layout';
 
 const Project = () =>{
     const [fullName, setFullName] = useState();
@@ -42,6 +43,7 @@ const Project = () =>{
     }
 
     return (
+        <Layout>
     <div class="container">
         <h2 id="project_name">{projectName}</h2>
         <div class="jumbotron py-2 pl-1">
@@ -133,6 +135,7 @@ const Project = () =>{
     </Col>
     </Row>
 </div>
+</Layout>
 );
 }
 

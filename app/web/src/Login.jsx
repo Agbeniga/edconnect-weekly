@@ -1,6 +1,7 @@
-import { useState, React } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Col, FormControl } from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
+import Layout from './shared/Layout';
 
 
 const FormGroup = (props) => {
@@ -80,6 +81,7 @@ const Login = () => {
 
 
     return (
+        <Layout>
         <div className="container">
             <div className="align-items-center text-left w-50 mx-auto">
                 <h2 id="loginTitle">Login</h2>
@@ -95,6 +97,7 @@ const Login = () => {
                 </Form>
             </div>
         </div>
+        </Layout>
     );
 
 }

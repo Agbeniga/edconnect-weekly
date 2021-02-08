@@ -1,46 +1,33 @@
 import { Button, Navbar, Nav, Form, FormControl } from 'react-bootstrap';
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
-
-
-
-
-
 
 //      Navbar: Updates navbar if user has loged in
 const CreateNavBarElement = (props) => {
     let history = useHistory();
-    function logoutUser(parameter) {
-        
+    function logoutUser(parameter) {        
         document.cookie = `uid=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
         history.push(parameter);
     }
-    
-
     return <>
         <Nav className="ml-auto">
-            <Nav.Link onClick={()=>logoutUser("/login")} className=" text-white-50 small">logout</Nav.Link>
+            <Nav.Link onClick={()=>logoutUser("/")} className=" text-white-50 small">logout</Nav.Link>
             <Nav.Link  className="text-white-50 small pr-0 mr-0" id="username">{`Hi, ${props.userName}`}</Nav.Link>
             
         </Nav>
     </>;
 }
 
-
 const Header = () => {
     const [cookie, setCookie] = useState("");
     const [firstName, setfirstName] = useState("");
     let history = useHistory();
-
-
     function getCookie(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
-
         for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
-
             while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
@@ -50,21 +37,14 @@ const Header = () => {
         }
         return "";
     }
-
     useEffect(() => {
-
         setCookie(getCookie("uid"));
-
-
-
         if (cookie !== "") {
             fetch(`/api/users/${cookie}`).then(
                 response => {
                     response.json().then(function (data) {
                         let userFirstName = data["firstname"];
                         setfirstName(userFirstName);
-
-
                     }).catch(e => {
                         console.log(e);
                     });
