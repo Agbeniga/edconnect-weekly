@@ -17,6 +17,7 @@ const FormGroup = (props) => {
                     size="lg"
                     value={props.value}
                     onChange={(event) => props.onChange(event.target.value)}
+                    
                     required
                 />
             </Form.Group>
@@ -85,7 +86,7 @@ const CreateProject = () => {
                     { errorMessages.length === 0 ? <></> : <Error errorText={errorMessages} />}
                 </div>
                 <Form id="createProjectForm" onSubmit={onHandleSubmit}>
-                    <FormGroup controlId="Project-name" label="Project Name" id="email" placeholder="Enter project name" type="text" value={projectNameInputValue} onChange={setProjectNameInputValue}></FormGroup>
+                    <FormGroup name="name" controlId="Project-name" label="Project Name" id="email" placeholder="Enter project name" type="text" value={projectNameInputValue} onChange={setProjectNameInputValue}></FormGroup>
                     <Form.Group as={Col} controlId="comment">
                         <Form.Label>Project Abstract</Form.Label>
                         <textarea
@@ -100,8 +101,8 @@ const CreateProject = () => {
                         </textarea>
 
                     </Form.Group>
-                    <FormGroup controlId="Authors" label="Authors" id="password" placeholder="Enter authors names(seperated by comma)" type="text" value={authorsInputValue} onChange={setAuthorsInputValue}></FormGroup>
-                    <FormGroup controlId="tag" label="Tag(s)" id="tag" placeholder="use # to tag project with different topics(e.g #javascript #mongodb)" type="text" value={tagInputValue} onChange={setTagInputValue}></FormGroup>
+                    <FormGroup controlId="Authors" name="authors" label="Authors" id="password" placeholder="Enter authors names(seperated by comma)" type="text" value={authorsInputValue} onChange={setAuthorsInputValue}></FormGroup>
+                    <FormGroup controlId="tag" name="tags" label="Tag(s)" id="tag" placeholder="use # to tag project with different topics(e.g #javascript #mongodb)" type="text" value={tagInputValue} onChange={setTagInputValue}></FormGroup>
 
                     <Button variant="primary" type="submit" className="btn btn-primary" id="createProjectButton">Continue</Button>
                 </Form>

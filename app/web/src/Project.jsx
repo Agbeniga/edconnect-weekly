@@ -109,7 +109,7 @@ const Project = () =>{
         
             <ListGroup>
                 {/* {authors} */}
-                <ListGroupItem class="list-group-item">{authors}</ListGroupItem>
+                <ListGroupItem class="list-group-item" id="project_authors">{authors}</ListGroupItem>
                 {/* {authors.map((value)=>
                      (<ListGroupItem class="list-group-item" key={value}>{value}</ListGroupItem>)
                 )} */}

@@ -66,7 +66,7 @@ const Header = () => {
         if(cookie !== ""){
             history.push("/projects/submit");
         }else{
-            logoutUser("/login");
+            logoutUser("/");
 
         }
         
