@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { Form, Button, Col, FormControl } from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import Layout from './shared/Layout';
@@ -76,6 +76,26 @@ const CreateProject = () => {
     evnt.preventDefault();
 }
 
+    useEffect(()=> {
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+            if(getCookie("uid") === ""){
+                history.push("/login");
+            }
+    },[]);
 
     return (
         <Layout>
@@ -86,7 +106,7 @@ const CreateProject = () => {
                     { errorMessages.length === 0 ? <></> : <Error errorText={errorMessages} />}
                 </div>
                 <Form id="createProjectForm" onSubmit={onHandleSubmit}>
-                    <FormGroup name="name" controlId="Project-name" label="Project Name" id="email" placeholder="Enter project name" type="text" value={projectNameInputValue} onChange={setProjectNameInputValue}></FormGroup>
+                    <FormGroup name="name" controlId="Project-name" label="Project Name" id="name" placeholder="Enter project name" type="text" value={projectNameInputValue} onChange={setProjectNameInputValue}></FormGroup>
                     <Form.Group as={Col} controlId="comment">
                         <Form.Label>Project Abstract</Form.Label>
                         <textarea
