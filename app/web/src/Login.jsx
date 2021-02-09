@@ -44,6 +44,7 @@ const Login = () => {
 
 
     function onHandleSubmit(err) {
+        
         document.cookie = `uid=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     fetch('/api/login',
         {
@@ -70,10 +71,12 @@ const Login = () => {
         let key = "uid";
         let value = data["data"]["id"];
         document.cookie = `${key}=${value};path=/;`;
+        console.log(document.cookie);
         history.push("/");
     }).catch(e => {
         // console.log(e.message);
     });
+
     err.preventDefault();
 
 
