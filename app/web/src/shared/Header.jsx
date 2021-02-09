@@ -54,7 +54,7 @@ const Header = () => {
 
         console.log(`cookie: ${cookie} firstname: ${firstName}`);
 
-    });
+    }, [cookie]);
 
     function logoutUser(parameter) {
         
@@ -100,8 +100,9 @@ const Header = () => {
                             :
                             <>
                                 <Nav className="ml-auto">
+                                <Nav.Link onClick={()=>logoutUser("/signup")}  className="nav-link text-white-50">Sign Up</Nav.Link>
                                     <Nav.Link onClick={()=>logoutUser("/login")} className="text-white-50">Login</Nav.Link>
-                                    <Nav.Link onClick={()=>logoutUser("/signup")}  className="nav-link text-white-50">Register</Nav.Link>
+                                    
                                 </Nav>
                             </>
                         }
