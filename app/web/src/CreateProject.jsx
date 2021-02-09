@@ -121,7 +121,7 @@ const CreateProject = () => {
                         </textarea>
 
                     </Form.Group>
-                    <FormGroup controlId="Authors" name="authors" label="Authors" id="password" placeholder="Enter authors names(seperated by comma)" type="text" value={authorsInputValue} onChange={setAuthorsInputValue}></FormGroup>
+                    <FormGroup controlId="Authors" name="authors" label="Authors" id="authors" placeholder="Enter authors names(seperated by comma)" type="text" value={authorsInputValue} onChange={setAuthorsInputValue}></FormGroup>
                     <FormGroup controlId="tag" name="tags" label="Tag(s)" id="tag" placeholder="use # to tag project with different topics(e.g #javascript #mongodb)" type="text" value={tagInputValue} onChange={setTagInputValue}></FormGroup>
 
                     <Button variant="primary" type="submit" className="btn btn-primary" id="createProjectButton">Continue</Button>
