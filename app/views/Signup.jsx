@@ -36,7 +36,7 @@ const FormSelect = (props) => {
     return (<>
         <Form.Group as={Col} controlId={props.controlId}>
             <Form.Label>{props.label}</Form.Label>
-            <FormControl as="select" size="lg" value={props.value} onChange={props.onChange} name={props.label}>
+            <FormControl as="select" size="lg" value={props.value} onChange={props.onChange} name={props.name}>
                 {props.options.map((value) => (
                     <option key={value}> {value} </option>
                     ))}
@@ -66,24 +66,24 @@ const Signup = (props) => {
                     { props.error.length === 0 ? <></> : <Error errorText={JSON.parse(props.error)} />}
                     </div>
                     <Form id="signupForm" method="post" action="signup">
-                        {/* <Form.Row >
+                        <Form.Row >
                             <FormGroup controlId="fname" label="First Name" id="firstName" placeholder="First name" type="text" value={firstnameInputValue} onChange={setFirstnameInputValue}></FormGroup>
                             <FormGroup controlId="lname" label="Last name" id="lastName" placeholder="Last name" type="text" value={lastnameInputValue} onChange={setLastNameInputValue}></FormGroup>
                         </Form.Row>
                         <Form.Row >
                             <FormGroup controlId="email" label="Email" id="email" placeholder="Email Address" type="email" value={emailInputValue} onChange={setEmailInputValue}></FormGroup>
                             <FormGroup controlId="password" label="Password" id="password" placeholder="Your Password" type="password" value={passwordInputValue} onChange={setPasswordInputValue}></FormGroup>
-                        </Form.Row> */}
+                        </Form.Row>
 
 
                         <Form.Row>
                             <Col>
-                                <FormSelect controlId="program" label="Program" value={programInputValue} onChange={setProgramInputValue} options={programs}></FormSelect>
+                                <FormSelect controlId="program" name="program" label="Program" value={programInputValue} onChange={setProgramInputValue} options={programs}></FormSelect>
 
                             </Col>
                             <Col>
                                 <Form.Row>
-                                    {/* <FormGroup controlId="matricNumber" label="Matric Number" id="matricNumber" placeholder="e.g 16/2020" type="text" value={matricNoInputValue} onChange={setMatricNoInputValue}></FormGroup> */}
+                                    <FormGroup controlId="matricNumber" name="graduationYear" label="Matric Number" id="matricNumber" placeholder="e.g 16/2020" type="text" value={matricNoInputValue} onChange={setMatricNoInputValue}></FormGroup>
                                     <FormSelect controlId="year" label="Year" value={yearInputValue} onChange={setYearInputValue} options={years}></FormSelect>
 
                                 </Form.Row>
