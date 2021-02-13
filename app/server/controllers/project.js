@@ -27,10 +27,11 @@ router.post('/projects/submit', (req, res) => {
     // add code to render the Home Component, and pass in the projects  
     console.log(req.body);
     const { name, abstract, authors, tags } = req.body;
+    const user = req.session.user;
 
     const body = JSON.stringify(req.body);
     req.flash("projectMessge", body);
-    const [success, response] = project.create(name, abstract, authors.split(","), tags.split(","));
+    const [success, response] = project.create({name:name, abstract:abstract, authors:authors.split(","), tags:tags.split(","), createdBy:user["firstName"]});
 
     if (success) {
         res.redirect('/');
