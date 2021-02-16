@@ -42,7 +42,7 @@ router.post('/projects/submit', (req, res) => {
 
 
 
-router.get('/projects/:id', (req, res) => {
+router.get('/project/:id', (req, res) => {
 
     const projectId = req.params.id;
     const _project = project.getById(projectId);
