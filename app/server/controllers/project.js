@@ -42,30 +42,6 @@ router.post('/projects/submit', (req, res) => {
 
 
 
-
-// router.get('/project/:id', (req, res) => {
-
-//     // add code to render the Home Component, and pass in the projects  
-
-//     // as a props
-//     const projectId = req.params.id;
-//     const selectedProject = project.getById(projectId);
-//     const created = user.getById(selectedProject['createdBy']);
-//     const userSession = req.session.user;
-//     console.log(req.body);
-//     console.log(created);
-//     console.log(projectId);
-//     res.render('Project',
-//         {
-//             project: JSON.stringify(selectedProject),
-//             createdUser: JSON.stringify(created),
-//             session:userSession
-            
-//         });
-
-// });
-
-
 router.get('/projects/:id', (req, res) => {
 
     const projectId = req.params.id;
