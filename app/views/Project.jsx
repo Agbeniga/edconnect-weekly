@@ -15,7 +15,7 @@ const Project = (props) =>{
             <ul class="row align-items-center">
                 <div class="col-3">
                     <li class="list-unstyled">Created By</li>
-                    <li class="list-unstyled" id="project_author">{user['firstname']}</li>
+                    <li class="list-unstyled" id="project_author">{user['firstname'] + " " + user['lastname']}</li>
                 </div>
                 <div class="col-3">
                     <li class="list-unstyled">
