@@ -19,7 +19,7 @@ const FormGroup = (props) => {
                 <Form.Label > {props.label}</Form.Label>
                 <FormControl
                     id={props.id}
-                    name={props.id}
+                    name={props.name}
                     type={props.type}
                     placeholder={props.placeholder}
                     size="lg"
@@ -69,12 +69,12 @@ const Signup = (props) => {
                     </div>
                     <Form id="signupForm" method="post" action="signup">
                         <Form.Row >
-                            <FormGroup controlId="fname" label="First Name" id="firstName" placeholder="First name" type="text" value={firstnameInputValue} onChange={setFirstnameInputValue}></FormGroup>
-                            <FormGroup controlId="lname" label="Last name" id="lastName" placeholder="Last name" type="text" value={lastnameInputValue} onChange={setLastNameInputValue}></FormGroup>
+                            <FormGroup name="firstname" controlId="fname" label="First Name" id="firstName" placeholder="First name" type="text" value={firstnameInputValue} onChange={setFirstnameInputValue}></FormGroup>
+                            <FormGroup name="lastname" controlId="lname" label="Last name" id="lastName" placeholder="Last name" type="text" value={lastnameInputValue} onChange={setLastNameInputValue}></FormGroup>
                         </Form.Row>
                         <Form.Row >
-                            <FormGroup controlId="email" label="Email" id="email" placeholder="Email Address" type="email" value={emailInputValue} onChange={setEmailInputValue}></FormGroup>
-                            <FormGroup controlId="password" label="Password" id="password" placeholder="Your Password" type="password" value={passwordInputValue} onChange={setPasswordInputValue}></FormGroup>
+                            <FormGroup name="email" controlId="email" label="Email" id="email" placeholder="Email Address" type="email" value={emailInputValue} onChange={setEmailInputValue}></FormGroup>
+                            <FormGroup name="password" controlId="password" label="Password" id="password" placeholder="Your Password" type="password" value={passwordInputValue} onChange={setPasswordInputValue}></FormGroup>
                         </Form.Row>
 
 
@@ -85,7 +85,7 @@ const Signup = (props) => {
                             </Col>
                             <Col>
                                 <Form.Row>
-                                    <FormGroup controlId="matricNumber" label="Matric Number" id="matricNumber" placeholder="e.g 16/2020" type="text" value={matricNoInputValue} onChange={setMatricNoInputValue}></FormGroup>
+                                    <FormGroup  controlId="matricNumber" name="matricNumber" label="Matric Number" id="matricNumber" placeholder="e.g 16/2020" type="text" value={matricNoInputValue} onChange={setMatricNoInputValue}></FormGroup>
                                     <FormSelect controlId="year" name="graduationYear" label="Year" value={yearInputValue} onChange={setYearInputValue} options={years}></FormSelect>
 
                                 </Form.Row>

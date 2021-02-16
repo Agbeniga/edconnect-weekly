@@ -26,7 +26,11 @@ router.get('/projects/submit', (req, res) => {
 router.post('/projects/submit', (req, res) => {
     const { name, abstract, authors, tags } = req.body;
     const userSession = req.session.user;
-    const [success, response] = project.create({ name:name, abstract:abstract, authors:authors.split(','), tags:tags.split(','), createdBy:userSession["firstName"] });
+    const [success, response] = project.create({ name:name,
+         abstract:abstract,
+        authors:authors.split(','),
+        tags:tags.split(','), 
+        createdBy:userSession["firstName"] });
     console.log(req.body);
     if (success) {
         res.redirect("/");

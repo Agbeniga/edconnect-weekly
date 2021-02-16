@@ -12,6 +12,7 @@ router.get('/signup', (req, res) => {
     const error = req.flash("error");
     const session = req.session.user;
     console.log(req.body);
+    console.log(session);
 
     res.render('Signup',
         {
@@ -24,7 +25,7 @@ router.get('/signup', (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-    console.log(req.body);
+//     console.log(req.body);
     const [success, response] = user.create(req.body);
       console.log(response);
 
