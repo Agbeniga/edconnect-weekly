@@ -19,15 +19,33 @@ router.get('/signup', (req, res) => {
             years: JSON.stringify(school.getGradYears()),
             programs: JSON.stringify(school.getPrograms()),
             error: error,
-            session:session
+            session: session
         });
 
 });
 
 router.post("/signup", (req, res) => {
-//     console.log(req.body);
-    const [success, response] = user.create(req.body);
-      console.log(response);
+    //     console.log(req.body);
+    const {
+        firstName,
+        lastName,
+        email,
+        password,
+        program,
+        matricNumber,
+        graduationYear
+    } = req.body;
+    const [success, response] = user.create({
+
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        password: password,
+        matricNumber: matricNumber,
+        program: program,
+        graduationYear: graduationYear
+    });
+    console.log(response);
 
     if (success) {
         req.session.user = response;
@@ -53,7 +71,7 @@ router.get('/login', (req, res) => {
     res.render('Login',
         {
             error: error,
-            session:session
+            session: session
         });
 
 });

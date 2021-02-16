@@ -19,7 +19,7 @@ const FormGroup = (props) => {
                 <Form.Label > {props.label}</Form.Label>
                 <FormControl
                     id={props.id}
-                    name={props.name}
+                    name={props.id}
                     type={props.type}
                     placeholder={props.placeholder}
                     size="lg"
