@@ -25,7 +25,7 @@ const Home = (props) => {
                     {projects.map((value) => (
                         <Card className="mr-2 col-sm-12 col-md-6 col-lg-3" key={value.id}>
                             <Card.Body>
-                                <Card.Link href= {`/projects/${value.id}`} className="text-primary">{value.name}</Card.Link>
+                                <Card.Link href= {`/project/${value.id}`} className="text-primary">{value.name}</Card.Link>
                                 <Card.Text>{value.authors.join(" ")}</Card.Text>
                                 <Card.Text>{value.abstract}</Card.Text>
                                 <Card.Link href= {`viewProject.html?id=${value.id}`}>{value.tags.join(" #")}</Card.Link>
